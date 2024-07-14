@@ -12,21 +12,21 @@ function UpdateMenuItem() {
   });
 
   useEffect(() => {
-    fetchItemDetails(id);
-  }, [id]);
-  const fetchItemDetails = async (id) => {
-    try {
-      const response = await fetch(`http://localhost:5000/data/${id}`);
-      if (!response.ok) {
-        throw new Error("Failed to fetch item details");
+    const fetchItemDetails = async (id) => {
+      try {
+        const response = await fetch(`http://localhost:5000/data/${id}`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch item details");
+        }
+        const data = await response.json();
+        setFormData(data);
+      } catch (error) {
+        console.error("Error fetching item details:", error);
+        navigate(`/dashboard`);
       }
-      const data = await response.json();
-      setFormData(data);
-    } catch (error) {
-      console.error("Error fetching item details:", error);
-      navigate(`/dashboard`);
-    }
-  };
+    };
+    fetchItemDetails(id);
+  }, [id,navigate]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
