@@ -21,7 +21,7 @@ function NewMenuItem() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/data", {
+      const response = await fetch("https://rizonserverside.onrender.com/data", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

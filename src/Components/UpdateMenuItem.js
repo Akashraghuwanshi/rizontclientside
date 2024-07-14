@@ -10,11 +10,12 @@ function UpdateMenuItem() {
     menu_under: "",
     enable_yn: "Y",
   });
+  // 
 
   useEffect(() => {
     const fetchItemDetails = async (id) => {
       try {
-        const response = await fetch(`http://localhost:5000/data/${id}`);
+        const response = await fetch(`https://rizonserverside.onrender.com/data/${id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch item details");
         }
@@ -39,7 +40,7 @@ function UpdateMenuItem() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:5000/data/${id}`, {
+      const response = await fetch(`https://rizonserverside.onrender.com/data/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

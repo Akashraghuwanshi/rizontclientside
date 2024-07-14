@@ -17,7 +17,7 @@ function MenuItemDetail() {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/data/${id}`, {
+      const response = await fetch(`https://rizonserverside.onrender.com/data/${id}`, {
         method: 'DELETE',
       });
       if (!response.ok) {
