@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./Components/Navbar";
+import Dashboard from "./Components/Dasboard";
+import MenuItemDetail from "./Components/MenuItemDetails";
+import NewMenuItem from "./Components/NewMenuItem";
+import UpdateMenuItem from "./Components/UpdateMenuItem";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Navbar />
+      </div>
+
+      <Routes>
+           {/* Index route for default */}
+           <Route index element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard/>} />
+        <Route path="/menu/:id" element={<MenuItemDetail/>} />
+        <Route path="/menu/new" element={<NewMenuItem />} />
+        <Route path="/menu/:id/update" element={<UpdateMenuItem/>} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
